@@ -1,0 +1,47 @@
+from collections import defaultdict 
+class GraphDFS: 
+
+     
+    def __init__(self): 
+        self.graph = defaultdict(list) 
+
+     
+        self.graph[fromNode].append(toNode)
+
+    def DepthFirstSearch(self,node,visitedNodes):
+        
+        if node not in visitedNodes:
+        
+            visitedNodes.append(node)
+            
+            for adjacenctaNode in self.graph[node]:
+                
+                self.DepthFirstSearch(adjacenctaNode,visitedNodes)
+        
+        return visitedNodes
+
+
+graphDfs = GraphDFS() 
+graphDfs.addEdgeToGraph('A', 'B') 
+graphDfs.addEdgeToGraph('A', 'C') 
+graphDfs.addEdgeToGraph('B', 'A')
+graphDfs.addEdgeToGraph('B', 'C')
+graphDfs.addEdgeToGraph('B', 'D') 
+graphDfs.addEdgeToGraph('C', 'A') 
+graphDfs.addEdgeToGraph('C', 'B') 
+graphDfs.addEdgeToGraph('C', 'D') 
+graphDfs.addEdgeToGraph('C', 'E')
+graphDfs.addEdgeToGraph('D', 'B') 
+graphDfs.addEdgeToGraph('D', 'C')
+graphDfs.addEdgeToGraph('D', 'E')
+graphDfs.addEdgeToGraph('D', 'F')
+graphDfs.addEdgeToGraph('E', 'C')
+graphDfs.addEdgeToGraph('E', 'D')
+graphDfs.addEdgeToGraph('E', 'F')
+graphDfs.addEdgeToGraph('F', 'D')
+graphDfs.addEdgeToGraph('F', 'E')
+print ("Following is Depth First Traversal"
+                  " (starting from vertex A)")
+
+visitedOrder = graphDfs.DepthFirstSearch('A',[])
+print(' '.join(visitedOrder))
